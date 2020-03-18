@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'page1', component: Page1Component },
   { path: 'page2', component: Page2Component },
   { path: 'charts', component: ChartsComponent },
+  { path: 'charts/:type', component: ChartsComponent },
   { path: 'tables', component: TablesComponent },
   {
     path: 'utilities',
