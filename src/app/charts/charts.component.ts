@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { chartAreaDemo } from '../chartAreaDemo';
 import { chartPieDemo } from '../chartPieDemo';
 import { chartBarDemo } from '../chartBarDemo';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-charts',
@@ -18,7 +18,15 @@ export class ChartsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
-      this.type = param.get('type');
+      if (param.get('type')) {
+        this.type = param.get('type');
+      }
+    });
+
+    this.route.queryParamMap.subscribe(param => {
+      if (param.get('type')) {
+        this.type = param.get('type');
+      }
     });
   }
 
@@ -33,5 +41,17 @@ export class ChartsComponent implements OnInit, AfterViewInit {
   plusOne(value: string) {
     const num = +value + 1;
     this.router.navigateByUrl('/charts/' + num);
+  }
+
+  plusOneQuery(value: string) {
+    const num = +value + 1;
+
+    // this.router.navigateByUrl('/charts?type=' + num);
+
+    this.router.navigate(['/charts'], {
+      queryParams: {
+        type: num
+      }
+    });
   }
 }
