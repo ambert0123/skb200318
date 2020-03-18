@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { chartAreaDemo } from '../chartAreaDemo';
 import { chartPieDemo } from '../chartPieDemo';
-import { chartBarDemo } from './chartBarDemo';
+import { chartBarDemo } from '../chartBarDemo';
 
 @Component({
   selector: 'app-charts',
