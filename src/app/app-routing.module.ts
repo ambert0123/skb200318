@@ -6,7 +6,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
-import { ColorsComponent } from './utilities/colors/colors.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -16,13 +15,6 @@ const routes: Routes = [
   { path: 'charts', component: ChartsComponent },
   { path: 'charts/:type', component: ChartsComponent },
   { path: 'tables', component: TablesComponent },
-  {
-    path: 'utilities',
-    children: [
-      { path: '', pathMatch: 'full', redirectTo: 'colors' },
-      { path: 'colors', component: ColorsComponent }
-    ]
-  },
   { path: 'utilities', loadChildren: () => import('./utilities/utilities.module').then(m => m.UtilitiesModule) },
   { path: '**', component: NotFoundComponent }
 ];
