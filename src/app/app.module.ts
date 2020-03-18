@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ChartsComponent } from './charts/charts.component';
 import { TablesComponent } from './tables/tables.component';
+import { ColorsComponent } from './utilities/colors/colors.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TablesComponent } from './tables/tables.component';
     DashboardComponent,
     NotFoundComponent,
     ChartsComponent,
-    TablesComponent
+    TablesComponent,
+    ColorsComponent
   ],
   imports: [
     BrowserModule,
