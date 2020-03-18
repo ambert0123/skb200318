@@ -10,6 +10,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ChartsComponent } from './charts/charts.component';
+import { TablesComponent } from './tables/tables.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     Page1Component,
     Page2Component,
     DashboardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ChartsComponent,
+    TablesComponent
   ],
   imports: [
     BrowserModule,
