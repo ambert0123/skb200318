@@ -3,6 +3,7 @@ import { chartAreaDemo } from '../chartAreaDemo';
 import { chartPieDemo } from '../chartPieDemo';
 import { chartBarDemo } from '../chartBarDemo';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-charts',
@@ -48,10 +49,12 @@ export class ChartsComponent implements OnInit, AfterViewInit {
 
     // this.router.navigateByUrl('/charts?type=' + num);
 
-    this.router.navigate(['/charts'], {
+    const navExtra = Object.assign(environment.navExtras, {
       queryParams: {
         type: num
       }
     });
+
+    this.router.navigate(['/charts'], navExtra);
   }
 }
