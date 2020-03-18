@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { chartAreaDemo } from '../chartAreaDemo';
 import { chartPieDemo } from '../chartPieDemo';
 import { chartBarDemo } from '../chartBarDemo';
@@ -8,14 +8,18 @@ import { chartBarDemo } from '../chartBarDemo';
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css']
 })
-export class ChartsComponent implements OnInit {
+export class ChartsComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
   ngOnInit(): void {
-    chartAreaDemo();
-    chartPieDemo();
-    chartBarDemo();
   }
 
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      chartAreaDemo();
+      chartPieDemo();
+      chartBarDemo();
+    }, 0);
+  }
 }
