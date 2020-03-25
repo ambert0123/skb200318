@@ -36,9 +36,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     arr.push(this.fb.control('', []));
   }
 
+  removeAddress(i: number) {
+    (this.form.get('addresses') as FormArray).removeAt(i);
+  }
+
   ngOnDestroy(): void {
     document.body.className = this.origBodyClass;
   }
-
 
 }
