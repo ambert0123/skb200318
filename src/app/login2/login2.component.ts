@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login2',
@@ -19,9 +19,9 @@ export class Login2Component implements OnInit, OnDestroy {
     document.body.className = 'bg-gradient-primary';
 
     this.form = this.fb.group({
-      email: 'doggy.huang@gmail.com',
-      password: '123',
-      isRemember: true
+      email: ['doggy.huang@gmail.com', [Validators.required, Validators.email]],
+      password: ['123', [Validators.required]],
+      isRemember: [true, [Validators.required]]
     });
 
   }

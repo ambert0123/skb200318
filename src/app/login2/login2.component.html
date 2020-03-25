@@ -12,13 +12,45 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
-                <form class="user" [formGroup]="form" (ngSubmit)="doSubmit()">
+
+                <pre>form.value = {{ form.value | json }}
+form.pristine = {{ form.pristine }}
+form.dirty = {{ form.dirty }}
+form.touched = {{ form.touched }}
+form.untouched = {{ form.untouched }}
+form.valid = {{ form.valid }}
+form.invalid = {{ form.invalid }}
+form.enabled = {{ form.enabled }}
+form.disabled = {{ form.disabled }}
+form.status = {{ form.status }}
+form.errors = {{ form.errors | json }}</pre>
+                <form class="user" [formGroup]="form" (ngSubmit)="doSubmit()" #tForm="ngForm">
                   <div class="form-group">
-                    <input formControlName="email" type="email" class="form-control form-control-user" id="exampleInputEmail"
+                    <input formControlName="email"
+                      [class.is-invalid]="tForm.submitted && form.get('email').invalid"
+                      type="email" class="form-control form-control-user"
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
+
+                    <div *ngIf="tForm.submitted && form.get('email').invalid && form.get('email').errors.required"
+                    [class.invalid-feedback]="tForm.submitted && form.get('email').invalid && form.get('email').errors.required">請輸入 E-mail 地址</div>
+             <div *ngIf="tForm.submitted && form.get('email').invalid && form.get('email').errors.email"
+                    [class.invalid-feedback]="tForm.submitted && form.get('email').invalid && form.get('email').errors.email">請輸入合法的 E-mail 地址</div>
                   </div>
+
+                  <pre>form.get('email').value = {{ form.get('email').value }}
+form.get('email').pristine = {{ form.get('email').pristine }}
+form.get('email').dirty = {{ form.get('email').dirty }}
+form.get('email').touched = {{ form.get('email').touched }}
+form.get('email').untouched = {{ form.get('email').untouched }}
+form.get('email').valid = {{ form.get('email').valid }}
+form.get('email').invalid = {{ form.get('email').invalid }}
+form.get('email').enabled = {{ form.get('email').enabled }}
+form.get('email').disabled = {{ form.get('email').disabled }}
+form.get('email').status = {{ form.get('email').status }}
+form.get('email').errors = {{ form.get('email').errors | json }}</pre>
                   <div class="form-group">
-                    <input formControlName="password" type="password" class="form-control form-control-user" id="exampleInputPassword"
+                    <input formControlName="password" type="password" class="form-control form-control-user"
+                    [class.is-invalid]="tForm.submitted && form.get('password').invalid"
                            placeholder="Password">
                   </div>
                   <div class="form-group">
