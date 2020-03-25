@@ -18,7 +18,7 @@
 
                           #tEmail="ngModel"
                           [(ngModel)]="data.email" name="email" required email
-                          [class.is-invalid]="tEmail.invalid"
+                          [class.is-invalid]="tEmail.invalid" disabled
 
                            class="form-control form-control-user" id="exampleInputEmail"
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
@@ -38,6 +38,7 @@ tEmail.valid = {{ tEmail.valid }}
 tEmail.invalid = {{ tEmail.invalid }}
 tEmail.enabled = {{ tEmail.enabled }}
 tEmail.disabled = {{ tEmail.disabled }}
+tEmail.status = {{ tEmail.status }}
 tEmail.errors = {{ tEmail.errors | json }}</pre>
 
                   <div class="form-group">
