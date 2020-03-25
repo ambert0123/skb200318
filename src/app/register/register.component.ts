@@ -4,6 +4,9 @@ import { of } from 'rxjs';
 import { isNationalIdentificationNumberValid } from 'taiwan-id-validator';
 
 function ValidateSSID(control: AbstractControl) {
+  if (!control.value) {
+    return null;
+  }
   if (isNationalIdentificationNumberValid(control.value)) {
     return null;
   } else {
