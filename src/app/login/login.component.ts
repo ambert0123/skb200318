@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     isRemember: true
   };
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.origBodyClass = document.body.className;
@@ -29,8 +31,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   doSubmit(form: NgForm) {
     if (form.valid) {
-      // TODO
-      alert('送出表單');
+      of('1231231231231231').subscribe((token) => {
+        localStorage.setItem('token', token);
+        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+        console.log(returnUrl);
+        this.router.navigateByUrl(returnUrl);
+      });
     }
   }
 
