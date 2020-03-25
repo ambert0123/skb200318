@@ -12,7 +12,7 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
-                <form class="user was-validated">
+                <form class="user">
                   <div class="form-group">
                     <input type="email"
 
@@ -22,10 +22,13 @@
 
                            class="form-control form-control-user" id="exampleInputEmail"
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
-                  </div>
-                  <div *ngIf="tEmail.invalid && tEmail.errors.required">請輸入 E-mail 地址</div>
-                  <div *ngIf="tEmail.invalid && tEmail.errors.email">請輸入合法的 E-mail 地址</div>
 
+                    <div *ngIf="tEmail.invalid && tEmail.errors.required"
+                           [class.invalid-feedback]="tEmail.invalid && tEmail.errors.required">請輸入 E-mail 地址</div>
+                    <div *ngIf="tEmail.invalid && tEmail.errors.email"
+                           [class.invalid-feedback]="tEmail.invalid && tEmail.errors.email">請輸入合法的 E-mail 地址</div>
+
+                  </div>
                   <pre>tEmail.value = {{ tEmail.value }}
 tEmail.pristine = {{ tEmail.pristine }}
 tEmail.dirty = {{ tEmail.dirty }}
