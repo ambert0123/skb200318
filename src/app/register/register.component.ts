@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -25,10 +25,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
       password: ['123', [Validators.required]],
       confirmpw: ['123', [Validators.required]],
       addresses: this.fb.array([
-        this.fb.control('ADD1', []),
-        this.fb.control('ADD2', [])
+        this.fb.control('', []),
+        this.fb.control('', [])
       ])
     });
+  }
+
+  addNewAddress() {
+    const arr = this.form.get('addresses') as FormArray;
+    arr.push(this.fb.control('', []));
   }
 
   ngOnDestroy(): void {
