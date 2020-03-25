@@ -33,4 +33,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       alert('送出表單');
     }
   }
+
+  doLoginGoogle(form: NgForm) {
+    alert('變更送出 API 為登入 Google 帳號的 URL');
+  }
 }

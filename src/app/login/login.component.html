@@ -75,10 +75,10 @@ tEmail.errors = {{ tEmail.errors | json }}</pre>
                   </div>
                   <button class="btn btn-primary btn-user btn-block"> Login </button>
                   <hr>
-                  <a href="index.html" class="btn btn-google btn-user btn-block">
-                    <i class="fab fa-google fa-fw"></i> Login with Google </a>
-                  <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                    <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook </a>
+                  <button class="btn btn-google btn-user btn-block" (click)="doLoginGoogle(form)">
+                    <i class="fab fa-google fa-fw"></i> Login with Google </button>
+                  <button class="btn btn-facebook btn-user btn-block">
+                    <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook </button>
                 </form>
                 <hr>
                 <div class="text-center">
