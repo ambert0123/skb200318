@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -25,10 +26,25 @@ export class RegisterComponent implements OnInit, OnDestroy {
       password: ['123', [Validators.required]],
       confirmpw: ['123', [Validators.required]],
       addresses: this.fb.array([
-        this.fb.control('', []),
-        this.fb.control('', [])
       ])
     });
+
+    this.getData().subscribe(result => {
+
+      // this.form.setValue(result);
+
+      // this.form.patchValue(result);
+
+      const len = result.addresses.length;
+      result.addresses.forEach(str => {
+        (this.form.get('addresses') as FormArray).push(this.fb.control('', []));
+      });
+
+      delete result.password;
+      delete result.confirmpw;
+      this.form.reset(result);
+    });
+
   }
 
   addNewAddress() {
@@ -42,6 +58,24 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     document.body.className = this.origBodyClass;
+  }
+
+  getData() {
+    return of({
+      firstName: 'Tesla',
+      lastName: 'Lin',
+      email: 'example@example.com',
+      password: '1234',
+      confirmpw: '1234',
+      // abc: '',
+      addresses: [
+        'Taipei',
+        'Shanghai',
+        'Shanghai',
+        'Shanghai',
+        'Hong Kong'
+      ]
+    });
   }
 
 }
