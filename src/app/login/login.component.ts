@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
     isRemember: false
   };
 
+  @ViewChild('form') form: NgForm;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.form.control.markAsDirty();
   }
 
   ngOnDestroy(): void {
