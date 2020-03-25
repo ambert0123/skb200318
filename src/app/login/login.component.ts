@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
+import { NgForm, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
 
   origBodyClass = '';
 
@@ -16,11 +16,20 @@ export class LoginComponent implements OnInit, OnDestroy {
     isRemember: true
   };
 
+  user2: any = {
+    email: 'test@example.com',
+    password: '123',
+    isRemember: false
+  };
+
   constructor() { }
 
   ngOnInit(): void {
     this.origBodyClass = document.body.className;
     document.body.className = 'bg-gradient-primary';
+  }
+
+  ngAfterViewInit(): void {
   }
 
   ngOnDestroy(): void {

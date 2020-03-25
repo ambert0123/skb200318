@@ -13,6 +13,7 @@
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
                 <pre>data = {{ data | json }}
+user2 = {{ user2 | json }}
 form.value = {{ form.value | json }}
 form.pristine = {{ form.pristine }}
 form.dirty = {{ form.dirty }}
@@ -24,55 +25,120 @@ form.enabled = {{ form.enabled }}
 form.disabled = {{ form.disabled }}
 form.status = {{ form.status }}
 form.errors = {{ form.errors | json }}</pre>
+
+<hr>
+<h2>NgModelGroup1</h2>
+<pre>tUser1.value = {{ tUser1.value | json }}
+tUser1.pristine = {{ tUser1.pristine }}
+tUser1.dirty = {{ tUser1.dirty }}
+tUser1.touched = {{ tUser1.touched }}
+tUser1.untouched = {{ tUser1.untouched }}
+tUser1.valid = {{ tUser1.valid }}
+tUser1.invalid = {{ tUser1.invalid }}
+tUser1.enabled = {{ tUser1.enabled }}
+tUser1.disabled = {{ tUser1.disabled }}
+tUser1.status = {{ tUser1.status }}
+tUser1.errors = {{ tUser1.errors | json }}</pre>
+
+<h2>NgModelGroup2</h2>
+<pre>tUser2.value = {{ tUser2.value | json }}
+tUser2.pristine = {{ tUser2.pristine }}
+tUser2.dirty = {{ tUser2.dirty }}
+tUser2.touched = {{ tUser2.touched }}
+tUser2.untouched = {{ tUser2.untouched }}
+tUser2.valid = {{ tUser2.valid }}
+tUser2.invalid = {{ tUser2.invalid }}
+tUser2.enabled = {{ tUser2.enabled }}
+tUser2.disabled = {{ tUser2.disabled }}
+tUser2.status = {{ tUser2.status }}
+tUser2.errors = {{ tUser2.errors | json }}</pre>
+
                 <form class="user" #form="ngForm" (ngSubmit)="doSubmit(form)">
-                  <div class="form-group">
-                    <input type="email"
 
-                          #tEmail="ngModel"
-                          [(ngModel)]="data.email" name="email" required email
-                          [class.is-invalid]="form.submitted && tEmail.invalid"
+                  <ng-container ngModelGroup="user1" #tUser1="ngModelGroup">
 
-                           class="form-control form-control-user" id="exampleInputEmail"
-                           aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                    <div class="form-group">
+                      <input type="email"
 
-                    <div *ngIf="form.submitted && tEmail.invalid && tEmail.errors.required"
-                           [class.invalid-feedback]="form.submitted && tEmail.invalid && tEmail.errors.required">請輸入 E-mail 地址</div>
-                    <div *ngIf="form.submitted && tEmail.invalid && tEmail.errors.email"
-                           [class.invalid-feedback]="form.submitted && tEmail.invalid && tEmail.errors.email">請輸入合法的 E-mail 地址</div>
+                            #tEmail="ngModel"
+                            [(ngModel)]="data.email" name="email" required email
+                            [class.is-invalid]="form.submitted && tEmail.invalid"
 
-                  </div>
-                  <pre>tEmail.value = {{ tEmail.value }}
-tEmail.pristine = {{ tEmail.pristine }}
-tEmail.dirty = {{ tEmail.dirty }}
-tEmail.touched = {{ tEmail.touched }}
-tEmail.untouched = {{ tEmail.untouched }}
-tEmail.valid = {{ tEmail.valid }}
-tEmail.invalid = {{ tEmail.invalid }}
-tEmail.enabled = {{ tEmail.enabled }}
-tEmail.disabled = {{ tEmail.disabled }}
-tEmail.status = {{ tEmail.status }}
-tEmail.errors = {{ tEmail.errors | json }}</pre>
+                            class="form-control form-control-user" id="exampleInputEmail"
+                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
 
-                  <div class="form-group">
-                    <input type="password"
+                      <div *ngIf="form.submitted && tEmail.invalid && tEmail.errors.required"
+                            [class.invalid-feedback]="form.submitted && tEmail.invalid && tEmail.errors.required">請輸入 E-mail 地址</div>
+                      <div *ngIf="form.submitted && tEmail.invalid && tEmail.errors.email"
+                            [class.invalid-feedback]="form.submitted && tEmail.invalid && tEmail.errors.email">請輸入合法的 E-mail 地址</div>
 
-                          #tPassword="ngModel"
-                          [(ngModel)]="data.password" name="password" required
-                          [class.is-invalid]="form.submitted && tPassword.invalid"
-
-                           class="form-control form-control-user" id="exampleInputPassword"
-                           placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox small">
-                      <input type="checkbox"
-
-                            [(ngModel)]="data.isRemember" name="isRemember"
-
-                             class="custom-control-input" id="customCheck">
-                      <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
-                  </div>
+                    <div class="form-group">
+                      <input type="password"
+
+                            #tPassword="ngModel"
+                            [(ngModel)]="data.password" name="password" required
+                            [class.is-invalid]="form.submitted && tPassword.invalid"
+
+                            class="form-control form-control-user" id="exampleInputPassword"
+                            placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox small">
+                        <input type="checkbox"
+
+                              [(ngModel)]="data.isRemember" name="isRemember"
+
+                              class="custom-control-input" id="customCheck">
+                        <label class="custom-control-label" for="customCheck">Remember Me</label>
+                      </div>
+                    </div>
+
+                  </ng-container>
+
+                  <ng-container ngModelGroup="user2" #tUser2="ngModelGroup">
+
+                    <div class="form-group">
+                      <input type="email"
+
+                            #tUserEmail="ngModel"
+                            [(ngModel)]="user2.email" name="email" required email
+                            [class.is-invalid]="form.submitted && tUserEmail.invalid"
+
+                            class="form-control form-control-user" id="exampleInputUserEmail"
+                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
+
+                      <div *ngIf="form.submitted && tUserEmail.invalid && tUserEmail.errors.required"
+                            [class.invalid-feedback]="form.submitted && tUserEmail.invalid && tUserEmail.errors.required">請輸入 E-mail 地址</div>
+                      <div *ngIf="form.submitted && tUserEmail.invalid && tUserEmail.errors.email"
+                            [class.invalid-feedback]="form.submitted && tUserEmail.invalid && tUserEmail.errors.email">請輸入合法的 E-mail 地址</div>
+
+                    </div>
+                    <div class="form-group">
+                      <input type="password"
+
+                            #tUserPassword="ngModel"
+                            [(ngModel)]="user2.password" name="password" required
+                            [class.is-invalid]="form.submitted && tUserPassword.invalid"
+
+                            class="form-control form-control-user" id="exampleInputPassword"
+                            placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox small">
+                        <input type="checkbox"
+
+                              [(ngModel)]="user2.isRemember" name="isRemember"
+
+                              class="custom-control-input" id="customCheck2">
+                        <label class="custom-control-label" for="customCheck2">Remember Me</label>
+                      </div>
+                    </div>
+
+                  </ng-container>
+
+
+
                   <button class="btn btn-primary btn-user btn-block"> Login </button>
                   <hr>
                   <button class="btn btn-google btn-user btn-block" (click)="doLoginGoogle(form)">
