@@ -30,15 +30,15 @@ form.errors = {{ form.errors | json }}</pre>
 
                           #tEmail="ngModel"
                           [(ngModel)]="data.email" name="email" required email
-                          [class.is-invalid]="tEmail.invalid"
+                          [class.is-invalid]="form.submitted && tEmail.invalid"
 
                            class="form-control form-control-user" id="exampleInputEmail"
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
 
-                    <div *ngIf="tEmail.invalid && tEmail.errors.required"
-                           [class.invalid-feedback]="tEmail.invalid && tEmail.errors.required">請輸入 E-mail 地址</div>
-                    <div *ngIf="tEmail.invalid && tEmail.errors.email"
-                           [class.invalid-feedback]="tEmail.invalid && tEmail.errors.email">請輸入合法的 E-mail 地址</div>
+                    <div *ngIf="form.submitted && tEmail.invalid && tEmail.errors.required"
+                           [class.invalid-feedback]="form.submitted && tEmail.invalid && tEmail.errors.required">請輸入 E-mail 地址</div>
+                    <div *ngIf="form.submitted && tEmail.invalid && tEmail.errors.email"
+                           [class.invalid-feedback]="form.submitted && tEmail.invalid && tEmail.errors.email">請輸入合法的 E-mail 地址</div>
 
                   </div>
                   <pre>tEmail.value = {{ tEmail.value }}
@@ -58,7 +58,7 @@ tEmail.errors = {{ tEmail.errors | json }}</pre>
 
                           #tPassword="ngModel"
                           [(ngModel)]="data.password" name="password" required
-                          [class.is-invalid]="tPassword.invalid"
+                          [class.is-invalid]="form.submitted && tPassword.invalid"
 
                            class="form-control form-control-user" id="exampleInputPassword"
                            placeholder="Password">
