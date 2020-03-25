@@ -12,13 +12,25 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
-                <form class="user">
+                <pre>data = {{ data | json }}
+form.value = {{ form.value | json }}
+form.pristine = {{ form.pristine }}
+form.dirty = {{ form.dirty }}
+form.touched = {{ form.touched }}
+form.untouched = {{ form.untouched }}
+form.valid = {{ form.valid }}
+form.invalid = {{ form.invalid }}
+form.enabled = {{ form.enabled }}
+form.disabled = {{ form.disabled }}
+form.status = {{ form.status }}
+form.errors = {{ form.errors | json }}</pre>
+                <form class="user" #form="ngForm" (ngSubmit)="doSubmit(form)">
                   <div class="form-group">
                     <input type="email"
 
                           #tEmail="ngModel"
                           [(ngModel)]="data.email" name="email" required email
-                          [class.is-invalid]="tEmail.invalid" disabled
+                          [class.is-invalid]="tEmail.invalid"
 
                            class="form-control form-control-user" id="exampleInputEmail"
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
@@ -61,7 +73,7 @@ tEmail.errors = {{ tEmail.errors | json }}</pre>
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <a href="index.html" class="btn btn-primary btn-user btn-block"> Login </a>
+                  <button class="btn btn-primary btn-user btn-block"> Login </button>
                   <hr>
                   <a href="index.html" class="btn btn-google btn-user btn-block">
                     <i class="fab fa-google fa-fw"></i> Login with Google </a>

@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -26,4 +27,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     document.body.className = this.origBodyClass;
   }
 
+  doSubmit(form: NgForm) {
+    if (form.valid) {
+      // TODO
+      alert('送出表單');
+    }
+  }
 }
