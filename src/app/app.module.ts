@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ChartsComponent } from './charts/charts.component';
 import { TablesComponent } from './tables/tables.component';
+import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { TablesComponent } from './tables/tables.component';
     DashboardComponent,
     NotFoundComponent,
     ChartsComponent,
-    TablesComponent
+    TablesComponent,
+    LoginComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
