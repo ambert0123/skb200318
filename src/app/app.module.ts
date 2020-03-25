@@ -15,6 +15,7 @@ import { TablesComponent } from './tables/tables.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { Login2Component } from './login2/login2.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { Login2Component } from './login2/login2.component';
     TablesComponent,
     LoginComponent,
     LayoutComponent,
-    Login2Component
+    Login2Component,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
