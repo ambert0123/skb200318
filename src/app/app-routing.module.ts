@@ -8,6 +8,7 @@ import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -20,7 +21,7 @@ const routes: Routes = [
       { path: 'page2', component: Page2Component },
       { path: 'charts', component: ChartsComponent },
       { path: 'charts/:type', component: ChartsComponent },
-      { path: 'tables', component: TablesComponent },
+      { path: 'tables', component: TablesComponent, canActivate: [AuthGuard] },
       { path: 'utilities', loadChildren: () => import('./utilities/utilities.module').then(m => m.UtilitiesModule) }
     ]
   },
