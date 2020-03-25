@@ -1,6 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl } from '@angular/forms';
 import { of } from 'rxjs';
+import { isNationalIdentificationNumberValid } from 'taiwan-id-validator';
+
+function ValidateSSID(control: AbstractControl) {
+  if (isNationalIdentificationNumberValid(control.value)) {
+    return null;
+  } else {
+    return {
+      ssid: '請輸入正確的身分證字號'
+    };
+  }
+}
+
 
 @Component({
   selector: 'app-register',
@@ -25,6 +37,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       email: ['doggy.huang@gmail.com', [Validators.required, Validators.email]],
       password: ['123', [Validators.required]],
       confirmpw: ['123', [Validators.required]],
+      ssid: ['', [Validators.required, ValidateSSID]],
       addresses: this.fb.array([
       ])
     });
