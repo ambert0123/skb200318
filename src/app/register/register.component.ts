@@ -19,14 +19,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
     document.body.className = 'bg-gradient-primary';
 
     this.form = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      confirmpw: ['', [Validators.required]],
+      firstName: ['Will', [Validators.required]],
+      lastName: ['Huang', [Validators.required]],
+      email: ['doggy.huang@gmail.com', [Validators.required, Validators.email]],
+      password: ['123', [Validators.required]],
+      confirmpw: ['123', [Validators.required]],
       addresses: this.fb.array([
-        this.fb.control('', []),
-        this.fb.control('', [])
+        this.fb.control('ADD1', []),
+        this.fb.control('ADD2', [])
       ])
     });
   }
