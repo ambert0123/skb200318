@@ -9,6 +9,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   origBodyClass = '';
 
+  data: any = {
+    email: 'doggy.huang@gmail.com',
+    password: '123123',
+    isRemember: true
+  };
+
   constructor() { }
 
   ngOnInit(): void {
