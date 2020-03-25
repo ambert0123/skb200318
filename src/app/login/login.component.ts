@@ -32,7 +32,9 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.form.control.markAsDirty();
+    setTimeout(() => {
+      this.form.control.markAsDirty();
+    }, 0);
   }
 
   ngOnDestroy(): void {
